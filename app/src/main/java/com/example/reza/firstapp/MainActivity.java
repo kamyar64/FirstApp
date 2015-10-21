@@ -1,20 +1,25 @@
 package com.example.reza.firstapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    Button b;
+    Button b,b1;
     TextView t;
+    EditText ed;
     int n=1;
 
     @Override
@@ -22,23 +27,37 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         b= (Button) findViewById(R.id.button);
+        b1= (Button) findViewById(R.id.button1);
         t= (TextView) findViewById(R.id.num);
-
+        ed= (EditText) findViewById(R.id.tb1);
         b.setOnClickListener(this);
+        b1.setOnClickListener(this);
+
 
     }
 
 
     @Override
     public void onClick(View v) {
+    switch (v.getId()){
+        case  R.id.button :
+            if (n % 2 == 0)
+                Toast.makeText(getApplicationContext(), "You Number Is Odd",
+                        Toast.LENGTH_SHORT).show();
 
-        if(n%2==0)
-        Toast.makeText(getApplicationContext(), "You Number Is Odd",
-                Toast.LENGTH_SHORT).show();
+            else
+                Toast.makeText(getApplicationContext(), "You Number Is Even",
+                        Toast.LENGTH_SHORT).show();
+            t.setText("Your Number :" + String.valueOf(n++));
+            break;
+        case R.id.button1 :
+            Toast.makeText(getApplicationContext(),ed.getText(),Toast.LENGTH_LONG).show();
+            String vlaue=String.valueOf(ed.getText()) ;
+            Intent intent = new Intent(getBaseContext(),SecoundA.class);
+            intent.putExtra("ID",vlaue);
+            startActivity(intent);
+            break;
 
-        else
-            Toast.makeText(getApplicationContext(), "You Number Is Even",
-                    Toast.LENGTH_SHORT).show();
-        t.setText("Your Number :" + String.valueOf(n++));
+    }
     }
 }
