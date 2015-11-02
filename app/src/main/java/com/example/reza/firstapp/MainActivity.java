@@ -17,7 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    Button b,b1;
+    Button b,b1,b2;
     TextView t;
     EditText ed;
     int n=1;
@@ -28,11 +28,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         b= (Button) findViewById(R.id.button);
         b1= (Button) findViewById(R.id.button1);
+        b2= (Button) findViewById(R.id.button2);
         t= (TextView) findViewById(R.id.num);
         ed= (EditText) findViewById(R.id.tb1);
         b.setOnClickListener(this);
         b1.setOnClickListener(this);
-
+        b2.setOnClickListener(this);
 
     }
 
@@ -56,6 +57,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Intent intent = new Intent(getBaseContext(),SecoundA.class);
             intent.putExtra("ID",vlaue);
             startActivity(intent);
+            break;
+        case R.id.button2 :
+            Intent ss = new Intent(getBaseContext(),People_Activity.class);
+            startActivity(ss);
             break;
 
     }
