@@ -1,5 +1,6 @@
 package com.example.reza.firstapp;
 
+import android.content.Intent;
 import android.os.Handler;
 import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
@@ -24,6 +25,11 @@ ProgressBar progressBar;
         stop= (Button) findViewById(R.id.stop);
         start.setOnClickListener(this);
         stop.setOnClickListener(this);
+        Button next= (Button) findViewById(R.id.Next);
+        Button per= (Button) findViewById(R.id.Per);
+
+        next.setOnClickListener(this);
+        per.setOnClickListener(this);
     }
     int i=0;
     @Override
@@ -75,6 +81,14 @@ ProgressBar progressBar;
             case R.id.stop :
                 a.interrupt();
                 Toast.makeText(getApplicationContext(),"Toggle Button is Off",Toast.LENGTH_LONG).show();
+                break;
+            case R.id.Next :
+                Intent d=new Intent(getBaseContext(),Exam5.class);
+                startActivity(d);
+                break;
+
+            case R.id.Per:
+                finish();
                 break;
         }
     }
