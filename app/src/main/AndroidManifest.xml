@@ -18,13 +18,27 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SecoundA"
-            android:theme="@style/AppTheme.NoActionBar"
-            >
+        <activity
+            android:name=".SecoundA"
+            android:theme="@style/AppTheme.NoActionBar" >
         </activity>
-        <activity android:name=".People_Activity"
-            android:theme="@style/AppTheme.NoActionBar"
-            >
+        <activity
+            android:name=".People_Activity"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
+        <activity
+            android:name=".Exam1"
+            android:label="Exams" >
+        </activity>
+        <activity
+            android:name=".Exam2"
+            android:label="Exams" >
+        </activity>
+        <activity
+            android:name=".Exam3"
+            android:label="Exams" >
+        </activity>
+        <activity android:name=".Exam4" >
         </activity>
     </application>
 
