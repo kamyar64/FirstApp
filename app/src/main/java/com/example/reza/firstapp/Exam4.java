@@ -16,6 +16,8 @@ ProgressBar progressBar;
     static int progress;
     int progressStatus = 0;
     Handler handler = new Handler();  //handler for
+    Boolean isCanceled = true;
+    Thread a;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,56 +32,58 @@ ProgressBar progressBar;
 
         next.setOnClickListener(this);
         per.setOnClickListener(this);
-    }
-    int i=0;
-    @Override
-    public void onClick(final View v) {
+
+
         progress = 0;
-        progressBar.setMax(200);
+//        progressBar.setMax(200); in mitone to xml bashe
 
         //---do some work in background thread-----this is where we will do work and update progress bar
         //   do the work as a separate Thread whe will with start() method invocation below start running
 
-        Thread a =new Thread(new Runnable()          //IN YELLOW showing the anonymous instance of Runnable class createing here
+        a =new Thread(new Runnable()          //IN YELLOW showing the anonymous instance of Runnable class createing here
         {
             public void run()
             {
                 //—-do some work here—-
 
-
-
-                        //—-Update the progress bar—-
-                        handler.postDelayed(new Runnable() {
-                            @Override
+                while (progressStatus < 100) {
+                    if (!isCanceled)
+                    {
+                        progressStatus++;
+                        try {
+                            Thread.sleep(100);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        // Update the progress bar
+                        handler.post(new Runnable() {
                             public void run() {
-
-                                    //---simulate doing some work---
-                                    progressStatus = progressStatus + 10;
-                                //Do something after 100ms
                                 progressBar.setProgress(progressStatus);
-
-
-                                handler.postDelayed(this, 2000);
                             }
-                        }, 1500);
-
-
-
-
-
-
-
+                        });
+                    }
+                }
             }
 
         });
+        a.start();
+
+
+    }
+//    int i=0;
+    @Override
+    public void onClick(final View v) {
         switch (v.getId())
         {
             case R.id.start :
-
-                a.start();
+                isCanceled =false;
+                stop.setVisibility(View.VISIBLE);
+                start.setVisibility(View.GONE);
                 break;
             case R.id.stop :
-                a.interrupt();
+                isCanceled = true;
+                start.setVisibility(View.VISIBLE);
+                stop.setVisibility(View.GONE);
                 Toast.makeText(getApplicationContext(),"Toggle Button is Off",Toast.LENGTH_LONG).show();
                 break;
             case R.id.Next :
