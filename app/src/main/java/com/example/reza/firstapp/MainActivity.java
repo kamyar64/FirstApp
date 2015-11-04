@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             startActivity(ss);
             break;
         case R.id.button3 :
-            Intent dd = new Intent(getBaseContext(),Exam7.class);
+            Intent dd = new Intent(getBaseContext(),Exam1.class);
             startActivity(dd);
             break;
 
