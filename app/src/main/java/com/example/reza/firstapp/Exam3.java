@@ -11,7 +11,7 @@ import android.widget.Switch;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
-public class Exam3 extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener, View.OnClickListener {
+public class Exam3 extends AppCompatActivity implements View.OnClickListener {
 private CheckBox ch;
     ToggleButton btn;
     Switch sw;
@@ -20,11 +20,11 @@ private CheckBox ch;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exam3);
         ch= (CheckBox) findViewById(R.id.ch1);
-        ch.setOnCheckedChangeListener(this);
+        ch.setOnClickListener(this);
         sw= (Switch) findViewById(R.id.swit);
         btn= (ToggleButton) findViewById(R.id.btn);
-        sw.setOnCheckedChangeListener(this);
-        btn.setOnCheckedChangeListener(this);
+        sw.setOnClickListener(this);
+        btn.setOnClickListener(this); // dalilesh ro bepors
         Button next= (Button) findViewById(R.id.Next);
         Button per= (Button) findViewById(R.id.Per);
 
@@ -34,32 +34,30 @@ private CheckBox ch;
     }
 
     @Override
-    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        switch (buttonView.getId()){
-            case R.id.ch1:
-                if(ch.isChecked()==true)
-                Toast.makeText(getApplicationContext(),"Check",Toast.LENGTH_LONG).show();
-                if(ch.isChecked()==false)
-                    Toast.makeText(getApplicationContext(),"FALSE",Toast.LENGTH_LONG).show();
-
-            case R.id.swit:
-                if(sw.isChecked()==true)
-                    Toast.makeText(getApplicationContext(),"Switch Button in on",Toast.LENGTH_LONG).show();
-                if(sw.isChecked()==false)
-                    Toast.makeText(getApplicationContext(),"Switch Button in Off",Toast.LENGTH_LONG).show();
-
-            case R.id.btn:
-                if(btn.isChecked()==true)
-                    Toast.makeText(getApplicationContext(),"Toggle Button is On",Toast.LENGTH_LONG).show();
-                if(btn.isChecked()==false)
-                    Toast.makeText(getApplicationContext(),"Toggle Button is Off",Toast.LENGTH_LONG).show();
-
-        }
-    }
-
-    @Override
     public void onClick(View v) {
         switch (v.getId()){
+
+            case R.id.ch1:
+                if(ch.isChecked())
+                    Toast.makeText(getApplicationContext(),"Check",Toast.LENGTH_LONG).show();
+                else
+                    Toast.makeText(getApplicationContext(),"FALSE",Toast.LENGTH_LONG).show();
+                break;
+
+            case R.id.swit:
+                if(sw.isChecked())
+                    Toast.makeText(getApplicationContext(),"Switch Button in on",Toast.LENGTH_LONG).show();
+                else
+                    Toast.makeText(getApplicationContext(),"Switch Button in Off",Toast.LENGTH_LONG).show();
+                break;
+
+            case R.id.btn:
+                if(btn.isChecked())
+                    Toast.makeText(getApplicationContext(),"Toggle Button is On",Toast.LENGTH_LONG).show();
+                else
+                    Toast.makeText(getApplicationContext(),"Toggle Button is Off",Toast.LENGTH_LONG).show();
+                break;
+
             case R.id.Next :
                 Intent d=new Intent(getBaseContext(),Exam4.class);
                 startActivity(d);
