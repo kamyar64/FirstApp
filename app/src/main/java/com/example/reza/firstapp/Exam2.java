@@ -37,12 +37,21 @@ public class Exam2 extends AppCompatActivity implements View.OnClickListener {
         {
             case R.id.andbutton:
                 Toast.makeText(getApplicationContext(),"Android",Toast.LENGTH_LONG).show();
+                a.setChecked(true);
+                b.setChecked(false);
+                c.setChecked(false);
                 break;
             case R.id.phpbutton:
                 Toast.makeText(getApplicationContext(),"PHP",Toast.LENGTH_LONG).show();
+                a.setChecked(false);
+                b.setChecked(true);
+                c.setChecked(false);
                 break;
             case R.id.cbutton:
                 Toast.makeText(getApplicationContext(),"C#",Toast.LENGTH_LONG).show();
+                a.setChecked(false);
+                b.setChecked(false);
+                c.setChecked(true);
                 break;
             case R.id.Next :
                 Intent d=new Intent(getBaseContext(),Exam3.class);
