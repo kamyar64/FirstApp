@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.reza.firstapp" >
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -38,9 +40,17 @@
             android:name=".Exam3"
             android:label="Exams" >
         </activity>
-        <activity android:name=".Exam4" >
+        <activity
+            android:name=".Exam4"
+            android:label="Exam" >
         </activity>
-        <activity android:name=".Exam5" >
+        <activity
+            android:name=".Exam5"
+            android:label="Exam" >
+        </activity>
+        <activity android:name=".Exam6" >
+        </activity>
+        <activity android:name=".Exam7" >
         </activity>
     </application>
 

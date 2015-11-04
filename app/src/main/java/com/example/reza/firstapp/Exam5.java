@@ -1,16 +1,18 @@
 package com.example.reza.firstapp;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ExpandableListView;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class Exam5 extends AppCompatActivity {
+public class Exam5 extends AppCompatActivity implements View.OnClickListener {
     private SeekBar se;
     private TextView text;
     private Spinner sp;
@@ -20,6 +22,10 @@ public class Exam5 extends AppCompatActivity {
         setContentView(R.layout.activity_exam5);
         se= (SeekBar) findViewById(R.id.seek);
         sp= (Spinner) findViewById(R.id.sp);
+        Button next= (Button) findViewById(R.id.Next);
+        Button per= (Button) findViewById(R.id.Per);
+        next.setOnClickListener(this);
+        per.setOnClickListener(this);
         sp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -54,4 +60,18 @@ public class Exam5 extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId())
+        {
+            case R.id.Next :
+                Intent d=new Intent(getBaseContext(),Exam6.class);
+                startActivity(d);
+                break;
+
+            case R.id.Per:
+                finish();
+                break;
+        }
+    }
 }
