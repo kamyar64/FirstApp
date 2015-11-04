@@ -9,10 +9,11 @@
     <WebView
         android:layout_width="match_parent"
         android:id="@+id/web"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_above="@+id/footer"/>
 
-    </WebView>
     <LinearLayout
+        android:id="@+id/footer"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
