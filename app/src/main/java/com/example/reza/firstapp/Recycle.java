@@ -1,36 +1,58 @@
 package com.example.reza.firstapp;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+
 import java.util.ArrayList;
-import java.util.List;
+import com.example.reza.firstapp.RVAdapter;
+import retrofit.Callback;
+import retrofit.RestAdapter;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 
 public class Recycle extends AppCompatActivity {
-    private List<Person> persons;
-    private RecyclerView rv;
+    private ArrayList<Result> contacts;
+    private RecyclerView newsRC;
+    private RecyclerView.Adapter mAdapter;
+    private  LinearLayoutManager llm;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recycle);
-        rv = (RecyclerView)findViewById(R.id.rv);
-        rv.setHasFixedSize(true);
-        LinearLayoutManager llm = new LinearLayoutManager(this);
+        newsRC = (RecyclerView)findViewById(R.id.rv);
+        newsRC.setHasFixedSize(true);
+         llm = new LinearLayoutManager(this);
         llm.setOrientation(LinearLayoutManager.VERTICAL);
-        rv.setLayoutManager(llm);
-        initializeData();
-        initializeAdapter();
-    }
-    private void initializeData(){
-        persons = new ArrayList<>();
-        persons.add(new Person("Emma Wilson", "23 years old", R.drawable.emma));
-        persons.add(new Person("Lavery Maiss", "25 years old", R.drawable.lavery));
-        persons.add(new Person("Lillie Watts", "35 years old", R.drawable.lillie));
+        newsRC.setLayoutManager(llm);
+        contacts = new ArrayList<>();
+        mAdapter = new RVAdapter(contacts);
+        RestAdapter restAdapter = new RestAdapter.Builder()
+                .setEndpoint("http://146.185.172.42:80")
+                .build();
+        Contacts_Interface contactService = restAdapter.create(Contacts_Interface.class);
+        contactService.getService(new Callback<ContactsObj>() {
+            @Override
+            public void success(ContactsObj contactsObj, Response response) {
+                for (int i = 0; i <= contactsObj.getResults().length; i++) {
+                    Result resObj = new Result();
+                    resObj.setAddress(contactsObj.getResults()[i].getAddress());
+                    resObj.setCell_no(contactsObj.getResults()[i].getCell_no());
+                    resObj.setCreated_date(contactsObj.getResults()[i].getCreated_date());
+                    resObj.setFull_name(contactsObj.getResults()[i].getFull_name());
+                    contacts.add(resObj);
+                }
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+
+            }
+        });
+        mAdapter.notifyDataSetChanged();
+
+
     }
 
-    private void initializeAdapter(){
-        RVAdapter adapter = new RVAdapter(persons);
-        rv.setAdapter(adapter);
-    }
 }
