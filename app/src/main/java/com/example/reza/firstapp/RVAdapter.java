@@ -14,6 +14,7 @@ import java.util.List;
 public class RVAdapter extends RecyclerView.Adapter<RVAdapter.PersonViewHolder> {
 
 
+    
     public static class PersonViewHolder extends RecyclerView.ViewHolder {
 
         CardView cv;
