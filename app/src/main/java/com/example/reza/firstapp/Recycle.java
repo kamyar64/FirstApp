@@ -19,6 +19,7 @@ public class Recycle extends AppCompatActivity {
     private RecyclerView.Adapter mAdapter;
     private  LinearLayoutManager llm;
     @Override
+    
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recycle);
@@ -55,7 +56,7 @@ public class Recycle extends AppCompatActivity {
         });
 
 
-        
+
 
     }
 
