@@ -15,11 +15,12 @@ import retrofit.client.Response;
 public class Recycle extends AppCompatActivity {
     private ArrayList<Result> contacts;
     private RecyclerView newsRC;
+    
 
     private RecyclerView.Adapter mAdapter;
     private  LinearLayoutManager llm;
     @Override
-    
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recycle);
