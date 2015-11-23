@@ -48,6 +48,7 @@ public class Exam1 extends AppCompatActivity implements View.OnClickListener {
 
         switch (v.getId()) {
             case R.id.Next :
+
                 Intent d=new Intent(getBaseContext(),Exam2.class);
                 startActivity(d);
                 break;
