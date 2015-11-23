@@ -1,5 +1,6 @@
 package com.example.reza.firstapp;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,7 +8,7 @@ import android.view.View;
 import android.webkit.WebView;
 import android.widget.Button;
 
-public class Exam6 extends AppCompatActivity implements View.OnClickListener {
+public class Exam6 extends Activity implements View.OnClickListener {
     WebView web;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,7 +19,10 @@ public class Exam6 extends AppCompatActivity implements View.OnClickListener {
         next.setOnClickListener(this);
         per.setOnClickListener(this);
         web= (WebView) findViewById(R.id.web);
+        web.getSettings().setJavaScriptEnabled(true);
+        web.setWebViewClient(new WebViewController());
         web.loadUrl("http://www.pfont.ir");
+
     }
 
     @Override

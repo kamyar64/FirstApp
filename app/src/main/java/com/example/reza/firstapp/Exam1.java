@@ -10,7 +10,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-public class Exam1 extends AppCompatActivity implements View.OnClickListener {
+public class Exam1 extends AppCompatActivity implements View.OnClickListener, RadioGroup.OnCheckedChangeListener {
     private RadioGroup radioSexGroup;
     private RadioButton radioSexButton;
     private Button btnDisplay;
@@ -20,22 +20,7 @@ public class Exam1 extends AppCompatActivity implements View.OnClickListener {
         setContentView(R.layout.activity_exam1);
 
         radioSexGroup = (RadioGroup) findViewById(R.id.radiogroup);
-         radioSexGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-         @Override
-         public void onCheckedChanged(RadioGroup group, int checkedId) {
-             // get selected radio button from radioGroup
-             int selectedId = radioSexGroup.getCheckedRadioButtonId();
-
-             // find the radiobutton by returned id
-             radioSexButton = (RadioButton) findViewById(selectedId);
-
-             Toast.makeText(getApplicationContext(),
-                     radioSexButton.getText(), Toast.LENGTH_SHORT).show();
-
-
-
-         }
-     });
+         radioSexGroup.setOnCheckedChangeListener(this);
         Button next= (Button) findViewById(R.id.Next);
         Button per= (Button) findViewById(R.id.Per);
 
@@ -61,5 +46,18 @@ public class Exam1 extends AppCompatActivity implements View.OnClickListener {
 
     }
 
+    @Override
+    public void onCheckedChanged(RadioGroup group, int checkedId) {
+        // get selected radio button from radioGroup
+        int selectedId = radioSexGroup.getCheckedRadioButtonId();
 
+        // find the radiobutton by returned id
+        radioSexButton = (RadioButton) findViewById(selectedId);
+
+        Toast.makeText(getApplicationContext(),
+                radioSexButton.getText(), Toast.LENGTH_SHORT).show();
+
+
+
+    }
 }
