@@ -3,11 +3,11 @@
     package="com.example.reza.firstapp" >
 
     <uses-permission android:name="android.permission.INTERNET" />
-        <dependency>
-          <groupId>com.squareup.retrofit</groupId>
-          <artifactId>retrofit</artifactId>
-          <version>1.9.0</version>
-        </dependency>
+    <dependency>
+        <groupId>com.squareup.retrofit</groupId>
+        <artifactId>retrofit</artifactId>
+        <version>1.9.0</version>
+    </dependency>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
